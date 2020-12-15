@@ -1,8 +1,15 @@
 import os
-
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import pandas as pd
+import plotly.offline as pyo
+import plotly.graph_objs as go
+import plotly.express as px
+
+from io import BytesIO
+from urllib.request import urlopen
+from zipfile import ZipFile
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -10,20 +17,29 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 server = app.server
 
+
+z = urlopen("https://covid19-dashboard.ages.at/data/data.zip")
+covidzip = ZipFile(BytesIO(z.read())).extract("CovidFaelleDelta.csv")
+covf_delta = pd.read_csv(covidzip, delimiter=";")
+
+
+covf_delta["Datum"] = covf_delta.Datum.str[0:10]
+
+fig_timeline = px.bar(covf_delta,
+                      x="Datum",
+                      y = "DeltaAnzahlVortag",
+                      title = "Daily infections",
+                     color = "DeltaAnzahlVortag", orientation = "v",
+             color_continuous_scale = "inferno")
+
+
+
 app.layout = html.Div([
-    html.H2('Hello World'),
-    dcc.Dropdown(
-        id='dropdown',
-        options=[{'label': i, 'value': i} for i in ['LA', 'NYC', 'MTL']],
-        value='LA'
-    ),
-    html.Div(id='display-value')
+    html.H2('Hello Dash'),
+    dcc.Graph(id = "covid_dash",
+              figure = fig_timeline)
 ])
 
-@app.callback(dash.dependencies.Output('display-value', 'children'),
-              [dash.dependencies.Input('dropdown', 'value')])
-def display_value(value):
-    return 'You have selected "{}"'.format(value)
 
 if __name__ == '__main__':
     app.run_server(debug=True)
