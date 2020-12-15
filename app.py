@@ -28,7 +28,7 @@ covf_delta["Datum"] = covf_delta.Datum.str[0:10]
 fig_timeline = px.bar(covf_delta,
                       x="Datum",
                       y = "DeltaAnzahlVortag",
-                      title = "Daily infections",
+                      title = "Neuinfektionen",
                      color = "DeltaAnzahlVortag", orientation = "v",
              color_continuous_scale = "inferno", labels = dict(Datum = "Datum", DeltaAnzahlVortag = "Neuinfektionen/Tag", sex = "Neuinfektionen/Tag"))
 
