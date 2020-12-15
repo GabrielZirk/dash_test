@@ -35,7 +35,7 @@ fig_timeline = px.bar(covf_delta,
 
 
 app.layout = html.Div([
-    html.H2('Hello Dash'),
+    html.H2('Data Science Rox :)'),
     dcc.Graph(id = "covid_dash",
               figure = fig_timeline)
 ])
