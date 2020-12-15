@@ -30,7 +30,7 @@ fig_timeline = px.bar(covf_delta,
                       y = "DeltaAnzahlVortag",
                       title = "Daily infections",
                      color = "DeltaAnzahlVortag", orientation = "v",
-             color_continuous_scale = "inferno", labels=dict(total_bill="Total Bill ($)", tip="Tip ($)", sex="Payer Gender")
+             color_continuous_scale = "inferno", labels=dict(total_bill="Total Bill ($)", tip="Tip ($)", sex="Payer Gender"))
 
 
 
