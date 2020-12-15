@@ -32,8 +32,7 @@ fig_timeline = px.bar(covf_delta,
                      color = "DeltaAnzahlVortag", orientation = "v",
              color_continuous_scale = "inferno")
 
-fig.update_xaxes(title_text='Datum')
-fig.update_yaxes(title_text='Neuinfektionen/Tag')
+
 
 app.layout = html.Div([
     html.H2('Data Science Rox :)'),
