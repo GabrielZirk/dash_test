@@ -1,3 +1,4 @@
+geojson
 argon2-cffi
 astroid==2.4.2
 async-generator==1.10
@@ -42,6 +43,7 @@ nbconvert
 nbformat
 nest-asyncio
 notebook
+
 numpy
 packaging
 pandas
