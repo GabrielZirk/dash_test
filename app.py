@@ -128,25 +128,12 @@ for i in [0.99, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0]:
     marks[str(covf_GKZ_tl["timecount"][round(len(covf_GKZ_tl) * i, 0)])] = covf_GKZ_tl["Time"][round(len(covf_GKZ_tl) * i, 0)]
 #print(marks)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 with open("data/Oesterreich_BEV_VGD_LAM_simple_wgs84_dissolved_BKZ.json") as f:
     austria_json = geojson.load(f)
 
 app.layout = html.Div(children=[
-    html.H1('Data Science Rox :)'),
-    html.H3(children = """Covid19 cases over time per GKZ"""),
+    html.H1('Covid Dashboard'),
+    html.H3(children = """Covid19 cases over time per district"""),
     dcc.Graph(id = "graph_with_slider",
               responsive = "auto",
               style = {"height" : "60vh"}),
